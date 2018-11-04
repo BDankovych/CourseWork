@@ -26,6 +26,8 @@ void SongPresenter::CatchError(const QString& error) {
 
 void SongPresenter::on_openFIleButton_pressed()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "Open song","/Desktop", tr("All files (*.dat)"));
-    SongManager::ReadSong(fileName);
+    QString fileName = QFileDialog::getOpenFileName(this, "Open song","", tr("All files (*.dat)"));
+    if (fileName != "") {
+        SongManager::ReadSong(fileName);
+    }
 }

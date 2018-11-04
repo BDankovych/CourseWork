@@ -8,19 +8,19 @@ SongManager::SongManager()
 }
 
 
-//void SongManager::ReadSong(QString fileName) {
-//    QFile file(fileName);
-//    SongManager::instance.currentSong << file;
-//    DisplaySong();
-//}
+void SongManager::ReadSong(QString fileName) {
+    QFile file(fileName);
+    instance.currentSong << file;
+    DisplaySong();
+}
 
 
-//void SongManager::DisplaySong() {
-//    SongDTO songDTO = SongDTO(SongManager::instance.currentSong);
-//    songPresenter->DisplaySong(songDTO);
-//}
+void SongManager::DisplaySong() {
+    SongDTO songDTO = SongDTO(instance.currentSong);
+    instance.songPresenter->DisplaySong(songDTO);
+}
 
-//void SongManager::WriteSong(QString fileName) {
-//    QFile file(fileName);
-//    SongManager::instance.currentSong >> file;
-//}
+void SongManager::WriteSong(QString fileName) {
+    QFile file(fileName);
+    instance.currentSong >> file;
+}
