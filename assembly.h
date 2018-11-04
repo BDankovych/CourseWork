@@ -5,7 +5,8 @@
 
 class SongPresenterProtocol {
 public:
-    virtual void displaySong(const SongDTO& songDTO) = 0;
+    virtual void DisplaySong(const SongDTO& songDTO) = 0;
+    virtual void CatchError(const QString& error) = 0;
 };
 
 #endif // ASSEMBLY_H

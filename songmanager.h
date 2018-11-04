@@ -10,19 +10,29 @@
 
 class SongManager
 {
-private:
-    SongManager();
+
 public:
+    SongManager();
     static SongManager instance;
-    void readSong(QString fileName);
-    void writeSong(QString fileName);
-    void displaySong();
+    static void ReadSong(QString fileName) {
+        QFile file(fileName);
+        SongManager::instance.currentSong << file;
+        DisplaySong();
+    }
+    static void WriteSong(QString fileName) {
+        QFile file(fileName);
+        SongManager::instance.currentSong >> file;
+    }
+    static void DisplaySong() {
+        SongDTO songDTO = SongDTO(SongManager::instance.currentSong);
+        SongManager::instance.songPresenter->DisplaySong(songDTO);
+    }
 
     SongPresenterProtocol *songPresenter;
     Song currentSong;
 
 };
 
-SongManager SongManager::instance = SongManager();
+
 
 #endif // SONGMANAGER_H
