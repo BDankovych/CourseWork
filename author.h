@@ -11,7 +11,7 @@ private:
 public:
     Author();
     Author(const QJsonObject &json);
-    QJsonObject toJson();
+    QJsonObject toJson() const;
     QString GetFirstName() const;
     QString GetLastName() const;
 };

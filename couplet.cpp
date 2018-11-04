@@ -21,3 +21,11 @@ QJsonObject Couplet::toJson() {
     jsonObj.insert("rows", QJsonArray::fromStringList(rows));
     return jsonObj;
 }
+
+int Couplet::GetSequenceNumber() const {
+    return sequenceNumber;
+}
+
+QStringList Couplet::GetRows() const {
+    return  rows;
+}

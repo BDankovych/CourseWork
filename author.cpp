@@ -10,9 +10,16 @@ Author::Author(const QJsonObject &json) {
     lastName = json["lastName"].toString();
 }
 
-QJsonObject Author::toJson() {
+QJsonObject Author::toJson() const {
     QJsonObject jsonObj;
     jsonObj.insert("firstname", firstName);
     jsonObj.insert("lastName", lastName);
     return jsonObj;
+}
+
+QString Author::GetFirstName() const {
+    return firstName;
+}
+QString Author::GetLastName() const {
+    return lastName;
 }
