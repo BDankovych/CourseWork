@@ -10,7 +10,8 @@
 
 class SongManager
 {
-
+private:
+    QString currentFileName;
 public:
     SongManager();
     static SongManager instance;
@@ -21,6 +22,9 @@ public:
     SongPresenterProtocol *songPresenter;
     Song currentSong;
 
+    static void setCurrentFile(const QString& fileName);
+    static QString getCurrentFileName();
+    static void swapCouplets(int first, int second);
 };
 
 

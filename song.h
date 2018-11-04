@@ -16,7 +16,7 @@ private:
     QString name;
     Author author;
     int coupletsCount;
-    vector<Couplet> couplets;
+
 public:
     Song();
     void readFromJson(const QJsonObject &json);
@@ -24,6 +24,8 @@ public:
     void operator << (QFile &file);
     void operator >> (QFile &file) const;
     bool isSonnet() const;
+
+    vector<Couplet> couplets;
 
     QString GetName() const;
     Author GetAuthor() const;

@@ -2,6 +2,7 @@
 #define SONGDTO_H
 
 #include "song.h"
+#include <algorithm>
 
 struct AuthorDTO {
 
@@ -69,7 +70,10 @@ struct SongDTO
         for (auto couplet: songCouplets) {
             couplets.push_back(CoupletDTO(couplet));
         }
+
+        std::sort(couplets.begin(), couplets.end(), [](CoupletDTO a, CoupletDTO b) {return a.sequenceNumber < b.sequenceNumber; });
     }
+
 };
 
 #endif // SONGDTO_H

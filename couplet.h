@@ -10,7 +10,7 @@
 class Couplet: QJsonObject
 {
 private:
-    int sequenceNumber;
+
     QStringList rows;
 public:
     Couplet();
@@ -19,6 +19,9 @@ public:
 
     int GetSequenceNumber() const;
     QStringList GetRows() const;
+    void setSequenceNumber(int newNumber);
+
+    int sequenceNumber;
 };
 
 #endif // COUPLET_H

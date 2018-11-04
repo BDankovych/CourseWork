@@ -29,3 +29,7 @@ int Couplet::GetSequenceNumber() const {
 QStringList Couplet::GetRows() const {
     return  rows;
 }
+
+void Couplet::setSequenceNumber(int newNumber) {
+    sequenceNumber = newNumber;
+}

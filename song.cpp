@@ -21,7 +21,7 @@ void Song::readFromJson(const QJsonObject &json) {
 QJsonObject Song::toJson() const{
     QJsonObject jsonObj;
     jsonObj.insert("name", name);
-    jsonObj.insert("couplesCount", coupletsCount);
+    jsonObj.insert("coupletsCount", coupletsCount);
     jsonObj.insert("author", author.toJson());
     QJsonArray arr;
     for(auto item: couplets) {
@@ -30,6 +30,7 @@ QJsonObject Song::toJson() const{
     jsonObj.insert("couplets", arr);
     return jsonObj;
 }
+
 
 void Song::operator>>(QFile &file) const{
     file.open(QFile::WriteOnly);

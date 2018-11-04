@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QList>
 #include "assembly.h"
 #include "songmanager.h"
 
@@ -22,6 +23,12 @@ public:
 
 private slots:
     void on_openFIleButton_pressed();
+
+    void on_saveButton_pressed();
+
+    void on_saveAsButton_pressed();
+
+    void on_pushButton_pressed();
 
 private:
     Ui::SongPresenter *ui;

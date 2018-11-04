@@ -12,7 +12,7 @@ Author::Author(const QJsonObject &json) {
 
 QJsonObject Author::toJson() const {
     QJsonObject jsonObj;
-    jsonObj.insert("firstname", firstName);
+    jsonObj.insert("firstName", firstName);
     jsonObj.insert("lastName", lastName);
     return jsonObj;
 }
