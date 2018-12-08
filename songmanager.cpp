@@ -8,6 +8,9 @@ SongManager::SongManager()
     currentFileName = "";
 }
 
+bool SongManager::isSongLoaded() {
+    return currentSong.GetName() != "";
+}
 
 void SongManager::ReadSong(QString fileName) {
     QFile file(fileName);

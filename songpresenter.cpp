@@ -6,9 +6,11 @@ SongPresenter::SongPresenter(QWidget *parent) :
     ui(new Ui::SongPresenter)
 {
     ui->setupUi(this);
+    ui->songTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     SongManager::instance.songPresenter = this;
     ui->spinBox->setMinimum(0);
     ui->spinBox_2->setMinimum(0);
+    isEditing = false;
 }
 
 SongPresenter::~SongPresenter()
@@ -30,7 +32,7 @@ void SongPresenter::DisplaySong(const SongDTO& songDTO) {
         for(auto row: couplet.rows) {
             rows.append(row);
         }
-        rows.append("");
+        rows.append("---");
     }
     ui->songTableWidget->setRowCount(rows.count());
 
@@ -46,6 +48,17 @@ void SongPresenter::DisplaySong(const SongDTO& songDTO) {
 
 void SongPresenter::CatchError(const QString& error) {
 
+}
+
+void  SongPresenter::FormClosedWithSong(const SongDTO& songDTO) {
+    DisplaySong(songDTO);
+    FormCanceled();
+    if (isEditing) {
+        SongManager::setCurrentFile("");
+    }
+}
+void SongPresenter::FormCanceled() {
+    setEnabled(true);
 }
 
 void SongPresenter::on_openFIleButton_pressed()
@@ -75,7 +88,33 @@ void SongPresenter::on_saveAsButton_pressed()
 
 void SongPresenter::on_pushButton_pressed()
 {
-    int firstCouplet = ui->spinBox->value();
-    int secondCouplet = ui->spinBox_2->value();
-    SongManager::swapCouplets(firstCouplet, secondCouplet);
+    if (SongManager::instance.isSongLoaded()) {
+        int firstCouplet = ui->spinBox->value();
+        int secondCouplet = ui->spinBox_2->value();
+        SongManager::swapCouplets(firstCouplet, secondCouplet);
+    } else {
+        QMessageBox::critical(this, tr("Error"),tr("No song for couplets swaping") );
+    }
+
+}
+
+void SongPresenter::on_addNewSongButton_clicked()
+{
+    isEditing = false;
+    addSongForm.delegate = this;
+    this->setEnabled(false);
+    addSongForm.show();
+}
+
+void SongPresenter::on_pushButton_2_clicked()
+{
+
+    if (SongManager::instance.isSongLoaded()) {
+        isEditing = true;
+        addSongForm.songDTO = SongDTO(SongManager::instance.currentSong);
+        on_addNewSongButton_clicked();
+        addSongForm.presentSong();
+    } else {
+        QMessageBox::critical(this, tr("Error"),tr("No song for editing") );
+    }
 }

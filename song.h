@@ -8,6 +8,7 @@
 #include <QJsonDocument>
 #include <vector>
 
+
 using namespace std;
 
 class Song: QJsonObject
@@ -19,6 +20,7 @@ private:
 
 public:
     Song();
+//    Song(const SongDTO& songDTO);
     void readFromJson(const QJsonObject &json);
     QJsonObject toJson() const;
     void operator << (QFile &file);

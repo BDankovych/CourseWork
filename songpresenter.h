@@ -6,12 +6,13 @@
 #include <QList>
 #include "assembly.h"
 #include "songmanager.h"
+#include "addsongform.h"
 
 namespace Ui {
 class SongPresenter;
 }
 
-class SongPresenter : public QMainWindow, public SongPresenterProtocol
+class SongPresenter : public QMainWindow, public SongPresenterProtocol, public AddSongFormProtocol
 {
     Q_OBJECT
 
@@ -20,6 +21,9 @@ public:
     ~SongPresenter();
     void DisplaySong(const SongDTO& songDTO) override;
     void CatchError(const QString& error) override;
+
+    void FormClosedWithSong(const SongDTO& songDTO) override;
+    void FormCanceled() override;
 
 private slots:
     void on_openFIleButton_pressed();
@@ -30,8 +34,15 @@ private slots:
 
     void on_pushButton_pressed();
 
+    void on_addNewSongButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
+    AddSongForm addSongForm;
     Ui::SongPresenter *ui;
+
+    bool isEditing;
 };
 
 #endif // SONGPRESENTER_H

@@ -30,7 +30,8 @@ SOURCES += \
     author.cpp \
     couplet.cpp \
     song.cpp \
-    songmanager.cpp
+    songmanager.cpp \
+    addsongform.cpp
 
 HEADERS += \
         songpresenter.h \
@@ -39,10 +40,12 @@ HEADERS += \
     couplet.h \
     song.h \
     songdto.h \
-    songmanager.h
+    songmanager.h \
+    addsongform.h
 
 FORMS += \
-        songpresenter.ui
+        songpresenter.ui \
+    addsongform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

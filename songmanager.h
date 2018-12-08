@@ -22,6 +22,8 @@ public:
     SongPresenterProtocol *songPresenter;
     Song currentSong;
 
+    bool isSongLoaded();
+
     static void setCurrentFile(const QString& fileName);
     static QString getCurrentFileName();
     static void swapCouplets(int first, int second);
