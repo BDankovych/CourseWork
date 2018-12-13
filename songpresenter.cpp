@@ -50,7 +50,27 @@ void SongPresenter::CatchError(const QString& error) {
 
 }
 
+Song dtoToSong(const SongDTO& songDTO) {
+    Song song = Song();
+    song.setName(songDTO.name);
+    int id = 0;
+    for (auto coupletDTO: songDTO.couplets) {
+        Couplet couplet = Couplet();
+        couplet.setRows(coupletDTO.rows);
+        song.couplets.push_back(couplet);
+        couplet.sequenceNumber = id;
+        id++;
+    }
+    Author auth = Author();
+    auth.setFirstName(songDTO.author.firstName);
+    auth.setLastName(songDTO.author.lastName);
+    song.setAuthor(auth);
+    song.setCoupletsCount(songDTO.couplets.size());
+    return song;
+}
+
 void  SongPresenter::FormClosedWithSong(const SongDTO& songDTO) {
+    SongManager::instance.currentSong = dtoToSong(songDTO);
     DisplaySong(songDTO);
     FormCanceled();
     if (isEditing) {
@@ -88,13 +108,7 @@ void SongPresenter::on_saveAsButton_pressed()
 
 void SongPresenter::on_pushButton_pressed()
 {
-    if (SongManager::instance.isSongLoaded()) {
-        int firstCouplet = ui->spinBox->value();
-        int secondCouplet = ui->spinBox_2->value();
-        SongManager::swapCouplets(firstCouplet, secondCouplet);
-    } else {
-        QMessageBox::critical(this, tr("Error"),tr("No song for couplets swaping") );
-    }
+
 
 }
 
@@ -116,5 +130,16 @@ void SongPresenter::on_pushButton_2_clicked()
         addSongForm.presentSong();
     } else {
         QMessageBox::critical(this, tr("Error"),tr("No song for editing") );
+    }
+}
+
+void SongPresenter::on_pushButton_clicked()
+{
+    if (SongManager::instance.isSongLoaded()) {
+        int firstCouplet = ui->spinBox->value();
+        int secondCouplet = ui->spinBox_2->value();
+        SongManager::swapCouplets(firstCouplet, secondCouplet);
+    } else {
+        QMessageBox::critical(this, tr("Error"),tr("No song for couplets swaping") );
     }
 }

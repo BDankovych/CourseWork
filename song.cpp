@@ -49,8 +49,23 @@ void Song::operator<<(QFile &file) {
     readFromJson(songJson);
 }
 
+void Song::setName(QString name) {
+    this->name = name;
+}
+void Song::setAuthor(Author author) {
+    this->author = author;
+}
+
+void Song::setCoupletsCount(int count) {
+    this->coupletsCount = count;
+}
+
 bool Song::isSonnet() const {
-    return true;
+    int rows = 0;
+    for (auto couplet: couplets) {
+        rows += couplet.GetRows().size();
+    }
+    return  rows == 14 && couplets.size() == 4;
 }
 
 QString Song::GetName() const {

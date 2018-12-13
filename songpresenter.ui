@@ -64,35 +64,6 @@
      <string>Add</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="clearSearchButton">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>20</y>
-      <width>41</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>36</width>
-      <height>36</height>
-     </size>
-    </property>
-    <property name="text">
-     <string>X</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="searchTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>20</y>
-      <width>281</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -116,7 +87,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="coupletsCountLabel">
@@ -129,7 +100,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -155,7 +126,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -175,9 +146,9 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>60</y>
+      <y>20</y>
       <width>341</width>
-      <height>361</height>
+      <height>401</height>
      </rect>
     </property>
     <attribute name="horizontalHeaderVisible">

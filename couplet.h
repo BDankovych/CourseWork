@@ -19,6 +19,7 @@ public:
 
     int GetSequenceNumber() const;
     QStringList GetRows() const;
+    void setRows(QStringList rows);
     void setSequenceNumber(int newNumber);
 
     int sequenceNumber;

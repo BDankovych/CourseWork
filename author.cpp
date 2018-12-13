@@ -23,3 +23,10 @@ QString Author::GetFirstName() const {
 QString Author::GetLastName() const {
     return lastName;
 }
+
+void Author::setFirstName(QString name) {
+    firstName = name;
+}
+void Author::setLastName(QString name) {
+    lastName = name;
+}

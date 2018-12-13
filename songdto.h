@@ -73,7 +73,7 @@ struct SongDTO
 
         std::sort(couplets.begin(), couplets.end(), [](CoupletDTO a, CoupletDTO b) {return a.sequenceNumber < b.sequenceNumber; });
     }
-
 };
+
 
 #endif // SONGDTO_H

@@ -15,6 +15,10 @@ Couplet::Couplet(const QJsonObject &json) {
     }
 }
 
+void Couplet::setRows(QStringList rows) {
+    this->rows = rows;
+}
+
 QJsonObject Couplet::toJson() {
     QJsonObject jsonObj;
     jsonObj.insert("sequenceNumber", sequenceNumber);

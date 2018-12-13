@@ -13,6 +13,8 @@ public:
     Author(const QJsonObject &json);
     QJsonObject toJson() const;
     QString GetFirstName() const;
+    void setFirstName(QString name);
+    void setLastName(QString name);
     QString GetLastName() const;
 };
 
